@@ -1,0 +1,9 @@
+#footer-container {
+  background-color: #f1f0f0;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  font-size: smaller;
+  color: grey;
+  width: 100%;
+  margin: 15px 0px;
+}

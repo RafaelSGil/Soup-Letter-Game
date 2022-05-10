@@ -1,12 +1,10 @@
 import "./assets/styles/App.css";
-import ControlPanel from "./components/control-panel/control-panel";
+import GamePanel from "./components/game-panel/game-panel";
 
 function App() {
   return (
-    <div id="container">
-      <h2>WORD GAME</h2>
-      <h3>Find all the words and win money!</h3>
-      <ControlPanel />
+    <div>
+      <GamePanel />
     </div>
   );
 }
