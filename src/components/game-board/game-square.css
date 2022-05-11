@@ -1,38 +1,3 @@
-/**********************************************
-*** © Linguagens Script > DEIS > ISEC > IPC 
-*** Jogo de Memória em React
-*** Estilos para game-panel.componente.jsx 
-**********************************************/
-
-#game-panel {
-  width: 100%;
-  margin: 0 auto;
-}
-
-#game {
-  width: 80%;
-  min-width: 200px;
-  margin: 0 auto;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  grid-template-columns: auto auto auto;
-  gap: 10px;
-  display: grid;
-  justify-content: center;
-  perspective: 1000px;
-  user-select: none;
-}
-
-#game.avancado {
-  width: 80%;
-  grid-template-columns: auto auto auto auto auto;
-}
-
-#game.intermedio {
-  width: 80%;
-  grid-template-columns: auto auto auto auto;
-}
-
 :root {
   --bg-color: rgba(150, 150, 150, 1);
 
@@ -60,8 +25,8 @@
 
   /* Numbers define values that will be used throughout the CSS.
   --tile-size: 20px for example will set size of the grid squares. */
-  --cols: 10;
-  --rows: 18;
+  --cols: 5;
+  --rows: 5;
   --tile-size: 20px;
   --border-width: 5px;
 }
