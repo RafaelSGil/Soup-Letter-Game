@@ -4,11 +4,13 @@ import GamePanel from "./components/game-panel/game-panel";
 import StartGameModal from "./components/game-start-modal/game-start-modal.component";
 import Header from "./components/header/header";
 import GridSquare from "./components/game-board/grid-square";
+import { ALPHABET } from "./constants";
 
 function App() {
   //true por default para abrir logo iniciamos a app
   const [show, setShow] = useState(true);
   //<button onClick={() => setShow(true)}>show</button>
+  console.log(ALPHABET);
   return (
     <>
       <div>

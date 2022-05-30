@@ -12,18 +12,18 @@ function ControlPanel() {
             <label htmlFor="btLevel">Level Selector:</label>
             <select id="btLevel">
               <option defaultValue value="0">
-                Seleccione...
+                Select level...
               </option>{" "}
-              <option value="1">Básico (2x3)</option>
-              <option value="2">Intermédio (3x4)</option>{" "}
-              <option value="3">Avançado (4x5)</option>
+              <option value="1">Basic (2x3)</option>
+              <option value="2">Medium (3x4)</option>{" "}
+              <option value="3">Hard (4x5)</option>
             </select>
           </fieldset>
           <button type="button" id="btPlay" className="right">
             Iniciar Jogo
           </button>
         </form>
-        <div>OLA MUITO BEM VINDOS</div>
+        <div>Sup motherfuckers</div>
       </div>
     </>
   );
