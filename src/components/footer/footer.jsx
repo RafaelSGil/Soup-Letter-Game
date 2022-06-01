@@ -1,12 +1,10 @@
 import React from "react";
 
-import "./footer.css";
-
 function Footer() {
   return (
-    <div id="footer-container">
+    <footer>
       <p>Made by 3 monkeys on space</p>
-    </div>
+    </footer>
   );
 }
 

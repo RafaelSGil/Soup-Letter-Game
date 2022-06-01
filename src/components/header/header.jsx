@@ -7,10 +7,9 @@ function Header() {
     backgroundColor: "#f1f0f0",
   };
   return (
-    <div id="container">
-      <h2>WORD GAME</h2>
-      <h3>Find all the words and win money!</h3>
-      <ControlPanel />
+    <div>
+      <h2 className="title">CrossWord Game</h2>
+      <h3>Find all the words to win!</h3>
     </div>
   );
 }

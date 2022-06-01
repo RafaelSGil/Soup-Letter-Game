@@ -1,18 +1,20 @@
 import React from "react";
 
-import Header from "../header/header";
-import Footer from "../footer/footer";
 import GameBoard from "../game-board/game-board";
+import "./game-panel.css";
 
-function GamePanel() {
+function GamePanel(props) {
+  let gameClass = "";
+
+  if (props.difficulty === "Medium") gameClass = "intermedio";
+  else if (props.difficulty === "Hard") gameClass = "avancado";
+
   return (
-    <div id="game-panel game">
-      <Header />
-      <div className="App">
-        <GameBoard />
+    <section className="game-panel">
+      <div>
+        {props.gameStarted ? <GameBoard difficulty={props.difficulty} /> : null}
       </div>
-      <Footer />
-    </div>
+    </section>
   );
 }
 

@@ -3,23 +3,60 @@ import "./assets/styles/App.css";
 import GamePanel from "./components/game-panel/game-panel";
 import StartGameModal from "./components/game-start-modal/game-start-modal.component";
 import Header from "./components/header/header";
-import GridSquare from "./components/game-board/grid-square";
-import { ALPHABET } from "./constants";
+import ControlPanel from "./components/control-panel/control-panel";
+import Footer from "./components/footer/footer";
 
 function App() {
   //true por default para abrir logo iniciamos a app
   const [show, setShow] = useState(true);
+  const [difficulty, setDifficulty] = useState("");
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const handleGameStart = () => {
+    if (gameStarted) {
+      setGameStarted(false);
+    } else {
+      setGameStarted(true);
+    }
+  };
+
+  const handleDifficulty = (event) => {
+    const { value } = event.currentTarget;
+
+    console.log(value);
+
+    switch (value) {
+      case "1":
+        setDifficulty("Easy");
+        break;
+      case "2":
+        setDifficulty("Medium");
+        break;
+      case "3":
+        setDifficulty("Hard");
+        break;
+      default:
+        setDifficulty("");
+        break;
+    }
+  };
+
   //<button onClick={() => setShow(true)}>show</button>
-  console.log(ALPHABET);
+
   return (
-    <>
-      <div>
-        <GamePanel />
-        <div className="App">
-          <StartGameModal onClose={() => setShow(false)} show={show} />
-        </div>
-      </div>
-    </>
+    <div id="container">
+      <Header />
+      <main className="main-content">
+        <ControlPanel
+          difficulty={difficulty}
+          handleDifficulty={handleDifficulty}
+          gameStarted={gameStarted}
+          onGameStart={handleGameStart}
+        />
+        <GamePanel difficulty={difficulty} gameStarted={gameStarted} />
+      </main>
+      <Footer />
+    </div>
   );
 }
 
