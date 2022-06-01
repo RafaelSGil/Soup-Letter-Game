@@ -23,8 +23,6 @@ function App() {
   const handleDifficulty = (event) => {
     const { value } = event.currentTarget;
 
-    console.log(value);
-
     switch (value) {
       case "1":
         setDifficulty("Easy");

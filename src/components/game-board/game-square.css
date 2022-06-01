@@ -1,6 +1,6 @@
 .grid-square {
   border-style: dotted;
-  width: 100%;
+  width: 60px; /*30px para medium*/
   height: fit-content;
   border-width: 0.1px;
   background-color: blanchedalmond;
@@ -12,4 +12,16 @@
 
 .grid-square:hover {
   background-color: lightblue;
+}
+
+.grid-square-Easy {
+  width: 60px;
+}
+
+.grid-square-Medium {
+  width: 30px;
+}
+
+.grid-square-Hard {
+  width: 100%;
 }

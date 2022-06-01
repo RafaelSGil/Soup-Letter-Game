@@ -24,12 +24,19 @@ function GameBoard(props) {
 
   const classes = `grid-board grid-${difficulty}`;
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < columns; i++) {
     grid.push([]);
-    for (let j = 0; j < columns; j++) {
+    for (let j = 0; j < rows; j++) {
       shuffledAlphabet = shuffleArray(ALPHABET);
       letter = shuffledAlphabet.slice(0, 1);
-      letter = grid[i].push(<GridSquare key={`${j}${i}`} letter={letter} />);
+      letter = grid[i].push(
+        <GridSquare
+          key={`${j},${i}`}
+          letter={letter}
+          difficulty={props.difficulty}
+          id={`${j},${i}`}
+        />
+      );
     }
   }
 
