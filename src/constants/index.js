@@ -26,6 +26,36 @@ export const ALPHABET = [
   "Y",
   "Z",
 ];
+
+export const words = [
+  "cry",
+  "fossil",
+  "pocket",
+  "mile",
+  "jelly",
+  "well",
+  "curtain",
+  "passive",
+  "abundant",
+  "visual",
+  "peak",
+  "mother",
+  "deadly",
+  "flat",
+  "dairy",
+  "inject",
+  "gloom",
+  "large",
+  "symbol",
+  "mars",
+  "angle",
+  "complain",
+  "tired",
+  "breed",
+  "date",
+  "courtesy",
+  "trace",
+];
 export const TIMEOUTGAME = 20; // seconds
 export const PLACEHOLDER_CARD_PATH = "/assets/images/";
 export const PLACEHOLDER_CARDBACK_PATH = `${PLACEHOLDER_CARD_PATH}ls.png`;

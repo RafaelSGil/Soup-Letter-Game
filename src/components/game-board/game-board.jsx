@@ -3,10 +3,10 @@ import GridSquare from "./grid-square";
 import "./game-board.css";
 import shuffleArray from "../../helpers/shuffle";
 import { ALPHABET } from "../../constants";
+import { words } from "../../constants";
 
 function GameBoard(props) {
   const grid = [];
-  let shuffledAlphabet;
   let letter;
   let difficulty = "";
   let rows = 10;
@@ -22,13 +22,17 @@ function GameBoard(props) {
     columns = 15;
   }
 
+  const randomWords = shuffleArray(words);
+  console.log(randomWords[0].split(""));
+
+  //arranjar maneira de meter as letras da palavra dentro do GridQuare
+
   const classes = `grid-board grid-${difficulty}`;
 
   for (let i = 0; i < columns; i++) {
     grid.push([]);
     for (let j = 0; j < rows; j++) {
-      shuffledAlphabet = shuffleArray(ALPHABET);
-      letter = shuffledAlphabet.slice(0, 1);
+      letter = shuffleArray(ALPHABET).slice(0, 1);
       letter = grid[i].push(
         <GridSquare
           key={`${j},${i}`}

@@ -39,7 +39,7 @@ function ControlPanel(props) {
         </p>
         <dl className={`list-item left${gameStartedClass}`}>
           <dt>Game Time:</dt>
-          <dd id="gameTime">0</dd>
+          <dd id="gameTime">{props.timer}</dd>
         </dl>
         <dl className={`list-item right${gameStartedClass}`}>
           <dt>TOP Score:</dt>
