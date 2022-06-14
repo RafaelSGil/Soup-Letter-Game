@@ -28,34 +28,50 @@ export const ALPHABET = [
 ];
 
 export const words = [
-  "cry",
-  "fossil",
-  "pocket",
-  "mile",
-  "jelly",
-  "well",
-  "curtain",
-  "passive",
-  "abundant",
-  "visual",
-  "peak",
-  "mother",
-  "deadly",
-  "flat",
-  "dairy",
-  "inject",
-  "gloom",
-  "large",
-  "symbol",
-  "mars",
-  "angle",
-  "complain",
-  "tired",
-  "breed",
-  "date",
-  "courtesy",
-  "trace",
+  "CRY",
+  "FOSSIL",
+  "POCKET",
+  "MILE",
+  "JELLY",
+  "WELL",
+  "CURTAIN",
+  "PASSIVE",
+  "ABUNDANT",
+  "VISUAL",
+  "PEAK",
+  "MOTHER",
+  "DEADLY",
+  "FLAT",
+  "DAIRY",
+  "INJECT",
+  "GLOOM",
+  "LARGE",
+  "SYMBOL",
+  "MARS",
+  "ANGLE",
+  "COMPLAIN",
+  "TIRED",
+  "BREED",
+  "DATE",
+  "COURTESY",
+  "TRACE",
+  "TROUBLE",
+  "LITIGATION",
+  "SATISFACTION",
+  "PREDATOR",
+  "COMPENSATION",
+  "PRESCRIPTION",
+  "THRESHOLD",
 ];
-export const TIMEOUTGAME = 20; // seconds
-export const PLACEHOLDER_CARD_PATH = "/assets/images/";
-export const PLACEHOLDER_CARDBACK_PATH = `${PLACEHOLDER_CARD_PATH}ls.png`;
+
+export const TIMER_EASY = 200;
+export const BOARD_EASY = 20;
+export const CARDS_EASY = 10;
+
+export const TIMER_MEDIUM = 175;
+export const BOARD_MEDIUM = 25;
+export const CARDS_MEDIUM = 13;
+
+export const TIMER_HARD = 150;
+export const BOARD_HARD = 30;
+export const CARDS_HARD = 15;
