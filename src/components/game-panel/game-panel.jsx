@@ -8,6 +8,7 @@ function GamePanel(props) {
   const { difficulty, board } = props;
   const [words, setWords] = useState([]);
   let gameClass = "easy";
+  let gameHide = "hide";
 
   const handleSetWords = (word) => {
     setWords(word);
@@ -16,10 +17,14 @@ function GamePanel(props) {
   if (props.difficulty === "Medium") gameClass = "intermedio";
   else if (props.difficulty === "Hard") gameClass = "avancado";
 
+  if (props.gameStarted) {
+    gameHide = "";
+  }
+
   return (
     <section className="game-panel">
       <div className="container">
-        <div id="game" className={gameClass}>
+        <div id="game" className={`${gameClass} ${gameHide}`}>
           {board.map((cell, index) => (
             <GridSquare
               key={cell.key}

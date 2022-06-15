@@ -5,29 +5,33 @@ import WordPanel from "../word-panel/word-panel";
 import "./word-panel.css";
 
 function WordList(props) {
+  const { difficulty, gameStarted, words } = props;
+
   const [isClicked, setIsClicked] = useState(false);
 
   const handleIsClicked = () => {
     setIsClicked((current) => !current);
   };
 
-  const palavras = [
-    "teta",
-    "tita",
-    "tota",
-    "testes",
-    "saddsada",
-    "sad",
-    "cabeca rapada",
-    "gilEanes",
-  ];
+  // const palavras = [
+  //   "teta",
+  //   "tita",
+  //   "tota",
+  //   "testes",
+  //   "saddsada",
+  //   "sad",
+  //   "cabeca rapada",
+  //   "gilEanes",
+  // ];
+
+  let gameClass = gameStarted ? "" : "hide";
 
   return (
     <>
-      <div className="fundo">
-        <div className="title">WORDS</div>
+      <div className={`fundo ${gameClass}`}>
+        <div className="title ">WORDS</div>
         <ul className="words-list">
-          {palavras.map((palavra) => (
+          {words.map((word) => (
             <li
               style={{
                 textDecoration: isClicked ? "line-through" : "none",
@@ -37,7 +41,7 @@ function WordList(props) {
               }}
               //falta meter a mostrar apenas quando startGame
             >
-              {palavra}
+              {word}
             </li>
           ))}
         </ul>

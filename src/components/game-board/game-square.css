@@ -1,0 +1,78 @@
+.grid-square {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 20px;
+  margin: 2px;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.grid-square:hover {
+  background-color: rgb(59, 131, 238);
+  color: white;
+}
+
+.grid-square-Easy {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 12px;
+  margin: 0.5px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.grid-square-Medium {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 12px;
+  margin: 0.5px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.grid-square-Hard {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 12px;
+  margin: 0.5px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
+}

@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     let tempBoard;
     let tempWords;
-    [tempBoard, tempWords] = buildBoard(5, difficulty, words);
+    [tempBoard, tempWords] = buildBoard(difficulty, words);
     console.log(tempWords);
     setBoard(tempBoard);
     setWordsInside(tempWords);
@@ -93,12 +93,16 @@ function App() {
           onGameStart={handleGameStart}
           timer={timer}
         />
+        <WordPanel
+          difficulty={difficulty}
+          gameStarted={gameStarted}
+          words={wordsInside}
+        />
         <GamePanel
           difficulty={difficulty}
           gameStarted={gameStarted}
           board={board}
         />
-        <WordPanel difficulty={difficulty} gameStarted={gameStarted} />
       </main>
       <Footer />
     </div>
