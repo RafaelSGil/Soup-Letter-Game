@@ -2,11 +2,13 @@ import React from "react";
 import { useState } from "react";
 
 import GameBoard from "../game-board/game-board";
+import GridSquare from "../game-board/grid-square";
 import "./game-panel.css";
 
 function GamePanel(props) {
+  const { difficulty, board } = props;
   const [words, setWords] = useState([]);
-  let gameClass = "";
+  let gameClass = "easy";
 
   const handleSetWords = (word) => {
     setWords(word);
@@ -17,10 +19,20 @@ function GamePanel(props) {
 
   return (
     <section className="game-panel">
-      <div>
-        {props.difficulty !== "" ? (
-          <GameBoard difficulty={props.difficulty} setWords={handleSetWords} />
-        ) : null}
+      <div className="container">
+        <div
+          id="game"
+          className={gameClass + (props.gameStarted ? "" : " hide")}
+        >
+          {board.map((cell, index) => (
+            <GridSquare
+              key={cell.key}
+              cell={cell}
+              coordinates={index}
+              difficulty={difficulty}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

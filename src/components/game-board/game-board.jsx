@@ -9,29 +9,28 @@ function GameBoard(props) {
   const grid = [];
   let letter;
   let difficulty = "";
-  let rows = 10;
+  let rows = 5;
   let columns = 5;
 
   if (props.difficulty === "Medium") {
     difficulty = "Medium";
-    rows = 20;
+    rows = 10;
     columns = 10;
   } else if (props.difficulty === "Hard") {
     difficulty = "Hard";
-    rows = 30;
-    columns = 15;
+    rows = 20;
+    columns = 20;
   }
 
   const randomWords = shuffleArray(words);
-  console.log(randomWords[0].split(""));
 
   //arranjar maneira de meter as letras da palavra dentro do GridQuare
 
   const classes = `grid-board grid-${difficulty}`;
 
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < rows; i++) {
     grid.push([]);
-    for (let j = 0; j < rows; j++) {
+    for (let j = 0; j < columns; j++) {
       letter = shuffleArray(ALPHABET).slice(0, 1);
       letter = grid[i].push(
         <GridSquare

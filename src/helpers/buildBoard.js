@@ -1,203 +1,190 @@
-import { ALPHABET, words } from "../constants";
+import { ALPHABET, words, BOARD_EASY, WORDS_EASY } from "../constants";
 
-const directions = {
-  leftRight: function (x, y, displacement) {
-    return { x: x + displacement, y: y };
-  },
-  rightLeft: function (x, y, displacement) {
-    return { x: x - displacement, y: y };
-  },
-  topDown: function (x, y, displacement) {
-    return { x: x, y: y + displacement };
-  },
-  downUp: function (x, y, displacement) {
-    return { x: x, y: y - displacement };
-  },
-  diagonalTopRight: function (x, y, displacement) {
-    return { x: x + displacement, y: y + displacement };
-  },
-  diagonalTopLeft: function (x, y, displacement) {
-    return { x: x - displacement, y: y + displacement };
-  },
-  diagonalBottomRight: function (x, y, displacement) {
-    return { x: x + displacement, y: y - displacement };
-  },
-  diagonalBottomLeft: function (x, y, displacement) {
-    return { x: x - displacement, y: y - displacement };
-  },
-};
+// const directions = {
+//   leftRight: function (x, y, displacement) {
+//     return { x: x + displacement, y: y };
+//   },
+//   rightLeft: function (x, y, displacement) {
+//     return { x: x - displacement, y: y };
+//   },
+//   topDown: function (x, y, displacement) {
+//     return { x: x, y: y + displacement };
+//   },
+//   downUp: function (x, y, displacement) {
+//     return { x: x, y: y - displacement };
+//   },
+//   diagonalTopRight: function (x, y, displacement) {
+//     return { x: x + displacement, y: y + displacement };
+//   },
+//   diagonalTopLeft: function (x, y, displacement) {
+//     return { x: x - displacement, y: y + displacement };
+//   },
+//   diagonalBottomRight: function (x, y, displacement) {
+//     return { x: x + displacement, y: y - displacement };
+//   },
+//   diagonalBottomLeft: function (x, y, displacement) {
+//     return { x: x - displacement, y: y - displacement };
+//   },
+// };
 
-const directionsDisplacements = {
-  leftRight: function () {
-    return { x: 1, y: 0 };
-  },
-  rightLeft: function () {
-    return { x: -1, y: 0 };
-  },
-  topDown: function () {
-    return { x: 0, y: 1 };
-  },
-  downUp: function () {
-    return { x: 0, y: -1 };
-  },
-  diagonalTopRight: function () {
-    return { x: 1, y: 1 };
-  },
-  diagonalTopLeft: function () {
-    return { x: -1, y: 1 };
-  },
-  diagonalBottomRight: function () {
-    return { x: 1, y: -1 };
-  },
-  diagonalBottomLeft: function () {
-    return { x: -1, y: -1 };
-  },
-};
+// let directionsDisplacements = {
+//   leftRight: function () {
+//     return [1, 0];
+//   },
+//   rightLeft: function () {
+//     return [-1, 0];
+//   },
+//   topDown: function () {
+//     return [0, 1];
+//   },
+//   downUp: function () {
+//     return [0, -1];
+//   },
+//   diagonalTopRight: function () {
+//     return [1, 1];
+//   },
+//   diagonalTopLeft: function () {
+//     return [-1, 1];
+//   },
+//   diagonalBottomRight: function () {
+//     return [1, -1];
+//   },
+//   diagonalBottomLeft: function () {
+//     return [-1, -1];
+//   },
+// };
 
-const checkDirections = {
-  leftRight: function (x, y, lines, columns, wordLength) {
-    return columns >= x + wordLength;
-  },
-  rightLeft: function (x, y, lines, columns, wordLength) {
-    return x + 1 >= wordLength;
-  },
-  topDown: function (x, y, lines, columns, wordLength) {
-    return lines >= y + wordLength;
-  },
-  downUp: function (x, y, lines, columns, wordLength) {
-    return y + 1 >= wordLength;
-  },
-  diagonalTopRight: function (x, y, lines, columns, wordLength) {
-    return columns >= x + wordLength && lines >= y + wordLength;
-  },
-  diagonalTopLeft: function (x, y, lines, columns, wordLength) {
-    return x + 1 >= wordLength && lines >= y + wordLength;
-  },
-  diagonalBottomRight: function (x, y, lines, columns, wordLength) {
-    return columns >= x + wordLength && y + 1 >= wordLength;
-  },
-  diagonalBottomLeft: function (x, y, lines, columns, wordLength) {
-    return x + 1 >= wordLength && y + 1 >= wordLength;
-  },
-};
+// let checkDirections = {
+//   leftRight: function (x, y, lines, columns, wordLength) {
+//     return columns >= x + wordLength;
+//   },
+//   rightLeft: function (x, y, lines, columns, wordLength) {
+//     return x + 1 >= wordLength;
+//   },
+//   topDown: function (x, y, lines, columns, wordLength) {
+//     return lines >= y + wordLength;
+//   },
+//   downUp: function (x, y, lines, columns, wordLength) {
+//     return y + 1 >= wordLength;
+//   },
+//   diagonalTopRight: function (x, y, lines, columns, wordLength) {
+//     return columns >= x + wordLength && lines >= y + wordLength;
+//   },
+//   diagonalTopLeft: function (x, y, lines, columns, wordLength) {
+//     return x + 1 >= wordLength && lines >= y + wordLength;
+//   },
+//   diagonalBottomRight: function (x, y, lines, columns, wordLength) {
+//     return columns >= x + wordLength && y + 1 >= wordLength;
+//   },
+//   diagonalBottomLeft: function (x, y, lines, columns, wordLength) {
+//     return x + 1 >= wordLength && y + 1 >= wordLength;
+//   },
+// };
 
-function buildBoard(timer, size, numberWords) {
-  let board = new Array(size);
-  let location;
-  let direction, directionDisplacement, directionCheck;
-  let x, xDisplacement;
-  let y, yDisplacement;
-  let word,
-    wordsInserted = [];
-  let inBoard;
-  let attempts;
+function buildBoard(
+  numberWords = WORDS_EASY,
+  boardSize = BOARD_EASY,
+  wordBank = words
+) {
+  let squares = new Array(boardSize);
+  let words = [];
+  let direction;
+  let position;
+  let attempt;
+  let success;
+  let xOffset;
+  let yOffset;
+  let word;
+  let x;
+  let y;
+  let i;
+  let j;
 
-  for (let i = 0; i < size; ++i) {
-    board[i] = new Array(size);
-    for (let j = 0; j < size; j++) {
-      board[i][j] = " ";
-    }
+  for (i = 0; i < boardSize; i++) {
+    squares[i] = new Array(boardSize);
+    for (j = 0; j < boardSize; j++) squares[i][j] = " ";
   }
 
-  for (let i = 0; i < numberWords; ++i) {
-    inBoard = false;
-    while (!inBoard) {
-      word = words[Math.round(Math.random() * (words.length - 1))]; //select a random word
+  for (i = 0; i < numberWords; i++) {
+    success = false;
+    while (!success) {
+      word = wordBank[Math.round(Math.random() * (wordBank.length - 1))];
 
-      if (size < word.length || wordsInserted.includes(word)) continue; //word bigger than board size OR already inside the board, next
-
-      for (attempts = 0; attempts < 100 && !inBoard; ++attempts) {
-        x = Math.round(Math.random() * (size - 1));
-        y = Math.round(Math.random() * (size - 1));
-        location = 0;
-        switch (Math.round(Math.random() * 7) - 1) {
-          default:
-            direction = directions.leftRight;
-            directionCheck = checkDirections.leftRight;
-            directionDisplacement = directionsDisplacements.leftRight;
+      if (boardSize < word.length || words.includes(word)) continue;
+      for (attempt = 0; attempt < 100 && !success; attempt++) {
+        direction = Math.round(Math.random() * 7) + 1;
+        x = Math.round(Math.random() * (boardSize - 1));
+        y = Math.round(Math.random() * (boardSize - 1));
+        position = 0;
+        switch (direction) {
+          default: // left to right
+            xOffset = 1;
+            yOffset = 0;
             break;
-          case 2:
-            direction = directions.rightLeft;
-            directionCheck = checkDirections.rightLeft;
-            directionDisplacement = directionsDisplacements.rightLeft;
+          case 2: // left top to right bottom
+            xOffset = 1;
+            yOffset = 1;
             break;
-          case 3:
-            direction = directions.topDown;
-            directionCheck = checkDirections.topDown;
-            directionDisplacement = directionsDisplacements.topDown;
+          case 3: // top to bottom
+            xOffset = 0;
+            yOffset = 1;
             break;
-          case 4:
-            direction = directions.downUp;
-            directionCheck = checkDirections.downUp;
-            directionDisplacement = directionsDisplacements.downUp;
+          case 4: // right top to left bottom
+            xOffset = -1;
+            yOffset = 1;
             break;
-          case 5:
-            direction = directions.diagonalTopLeft;
-            directionCheck = checkDirections.diagonalTopLeft;
-            directionDisplacement = directionsDisplacements.diagonalTopLeft;
+          case 5: // right to left
+            xOffset = -1;
+            yOffset = 0;
             break;
-          case 6:
-            direction = directions.diagonalTopRight;
-            directionCheck = checkDirections.diagonalTopRight;
-            directionDisplacement = directionsDisplacements.diagonalTopRight;
+          case 6: // right bottom to left top
+            xOffset = -1;
+            yOffset = -1;
             break;
-          case 7:
-            direction = directions.diagonalBottomLeft;
-            directionCheck = checkDirections.diagonalBottomLeft;
-            directionDisplacement = directionsDisplacements.diagonalBottomLeft;
+          case 7: // bottom to top
+            xOffset = 0;
+            yOffset = -1;
             break;
-          case 8:
-            direction = directions.diagonalBottomRight;
-            directionCheck = checkDirections.diagonalBottomRight;
-            directionDisplacement = directionsDisplacements.diagonalBottomRight;
+          case 8: // left bottom to right top
+            xOffset = 1;
+            yOffset = -1;
             break;
         }
-
-        [xDisplacement, yDisplacement] = directionDisplacement();
-
         if (
-          x + word.length * xDisplacement < 0 ||
-          size <= x + word.length * xDisplacement ||
-          y + word.length * yDisplacement < 0 ||
-          size <= y + word.length * yDisplacement
+          x + word.length * xOffset < 0 ||
+          boardSize <= x + word.length * xOffset ||
+          y + word.length * yOffset < 0 ||
+          boardSize <= y + word.length * yOffset
         ) {
           continue;
         }
-
-        for (location = 0; location < word.length; location++) {
-          if (
-            board[y + location * yDisplacement][
-              x + location * xDisplacement
-            ] === " "
-          ) {
-            board[y + location * yDisplacement][x + location * xDisplacement] =
-              word[location];
-          } else {
-            for (location = location - 1; 0 <= location; location--) {
-              board[y + location * yDisplacement][
-                x + location * xDisplacement
-              ] = " ";
-              break;
-            }
+        for (position = 0; position < word.length; position++) {
+          if (squares[y + position * yOffset][x + position * xOffset] === " ")
+            squares[y + position * yOffset][x + position * xOffset] =
+              word[position];
+          else {
+            for (position = position - 1; 0 <= position; position--)
+              squares[y + position * yOffset][x + position * xOffset] = " ";
+            break;
           }
         }
-
-        inBoard = location === word.length;
+        success = position === word.length;
       }
     }
-    wordsInserted.push(word);
+    words.push(word);
   }
+  /*
 
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-      if (board[i][j] === " ") {
-        board[i][j] =
+     For debug purposes, this section has been taken out.
+
+     */
+  for (i = 0; i < boardSize; i++) {
+    for (j = 0; j < boardSize; j++)
+      if (squares[i][j] === " ")
+        squares[i][j] =
           ALPHABET[Math.round(Math.random() * (ALPHABET.length - 1))];
-      }
-    }
   }
-
-  return [board.flat(), wordsInserted];
+  return [squares.flat(), words];
 }
 
 export default buildBoard;

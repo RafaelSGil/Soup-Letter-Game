@@ -1,27 +1,78 @@
 .grid-square {
-  border-style: dotted;
-  width: 60px; /*30px para medium*/
-  height: fit-content;
-  border-width: 0.1px;
-  background-color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 20px;
+  margin: 2px;
   text-align: center;
-  border-radius: 20%;
-  border-color: coral;
-  padding: 2px;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
 }
 
 .grid-square:hover {
-  background-color: lightblue;
+  background-color: rgb(59, 131, 238);
+  color: white;
 }
 
+/*daqui para baixo não é inutil?
+TF*/
 .grid-square-Easy {
-  width: 60px;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 20px;
+  margin: 2px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
 }
 
 .grid-square-Medium {
-  width: 30px;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 20px;
+  margin: 2px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
 }
 
 .grid-square-Hard {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  width: 10px; /*30px para medium*/
+  height: 10px;
+  border-width: 2px;
+  background-color: lightskyblue;
+  border-radius: 10px;
+  border-color: rgb(49, 77, 233);
+  padding: 20px;
+  margin: 2px;
+  text-align: center;
+  color: black;
+  align-items: center;
+  transition: all 0.2s;
 }

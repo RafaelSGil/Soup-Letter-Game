@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import "./assets/styles/App.css";
 import GamePanel from "./components/game-panel/game-panel";
+import WordPanel from "./components/word-panel/word-panel";
 import StartGameModal from "./components/game-start-modal/game-start-modal.component";
 import Header from "./components/header/header";
 import ControlPanel from "./components/control-panel/control-panel";
 import Footer from "./components/footer/footer";
+import buildBoard from "./helpers/buildBoard";
+import { words, BOARD_EASY, WORDS_EASY } from "./constants/index";
 
 let timerID = undefined;
 
@@ -15,19 +18,31 @@ function App() {
   const [difficulty, setDifficulty] = useState("");
   const [gameStarted, setGameStarted] = useState(false);
   const [timer, setTimer] = useState(50);
+  const [totalPoints, setTotalPoints] = useState(0);
+  const [board, setBoard] = useState([]);
+  const [numberWords, setNumberWords] = useState([]);
+  const [boardSize, setBoardSize] = useState(0);
+  const [wordsInside, setWordsInside] = useState([]);
 
   useEffect(() => {
-    //if game started, start timer
+    let tempBoard;
+    let tempWords;
+
+    [tempBoard, tempWords] = buildBoard(5, 15, words);
+    console.log(tempWords);
+    setBoard(tempBoard);
+    setWordsInside(tempWords);
+
     if (gameStarted) {
       timerID = setInterval(() => {
         let nextTimer;
         setTimer((previousState) => {
           nextTimer = previousState - 1;
+          if (nextTimer === 0) {
+            setGameStarted(false);
+          }
           return nextTimer;
         });
-        if (nextTimer === 0) {
-          setGameStarted(false);
-        }
       }, 1000);
     } else if (timer !== 50) {
       setTimer(50);
@@ -79,7 +94,12 @@ function App() {
           onGameStart={handleGameStart}
           timer={timer}
         />
-        <GamePanel difficulty={difficulty} gameStarted={gameStarted} />
+        <GamePanel
+          difficulty={difficulty}
+          gameStarted={gameStarted}
+          board={board}
+        />
+        <WordPanel difficulty={difficulty} gameStarted={gameStarted} />
       </main>
       <Footer />
     </div>

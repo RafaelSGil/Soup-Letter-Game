@@ -1,0 +1,42 @@
+/**********************************************
+*** © Linguagens Script
+*** Estilos para word-panel.componente.jsx 
+**********************************************/
+
+.fundo {
+  background-color: rgb(211, 245, 207);
+  padding: 10px 20px;
+  margin: 5px;
+  text-align: center;
+  width: 80%;
+  border: 0.2px #333 solid;
+}
+
+.title {
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.words-list {
+  columns: 2;
+}
+
+.words-list li {
+  width: 75%;
+  margin: 5px auto;
+  letter-spacing: 1px;
+  padding: 10px 40px;
+  background-color: rgb(168, 163, 163);
+  border-left: 0.2px #333 solid;
+  transition: all 0.2s;
+  font-weight: lighter;
+  list-style-type: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.words-list li:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
