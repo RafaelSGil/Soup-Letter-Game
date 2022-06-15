@@ -1,91 +1,99 @@
-import { ALPHABET, words, BOARD_EASY, WORDS_EASY } from "../constants";
+import {
+  ALPHABET,
+  words,
+  BOARD_EASY,
+  WORDS_EASY,
+  BOARD_MEDIUM,
+  BOARD_HARD,
+} from "../constants";
 
-// const directions = {
-//   leftRight: function (x, y, displacement) {
-//     return { x: x + displacement, y: y };
-//   },
-//   rightLeft: function (x, y, displacement) {
-//     return { x: x - displacement, y: y };
-//   },
-//   topDown: function (x, y, displacement) {
-//     return { x: x, y: y + displacement };
-//   },
-//   downUp: function (x, y, displacement) {
-//     return { x: x, y: y - displacement };
-//   },
-//   diagonalTopRight: function (x, y, displacement) {
-//     return { x: x + displacement, y: y + displacement };
-//   },
-//   diagonalTopLeft: function (x, y, displacement) {
-//     return { x: x - displacement, y: y + displacement };
-//   },
-//   diagonalBottomRight: function (x, y, displacement) {
-//     return { x: x + displacement, y: y - displacement };
-//   },
-//   diagonalBottomLeft: function (x, y, displacement) {
-//     return { x: x - displacement, y: y - displacement };
-//   },
-// };
+const directions = {
+  leftRight: function (x, y, displacement) {
+    return { x: x + displacement, y: y };
+  },
+  rightLeft: function (x, y, displacement) {
+    return { x: x - displacement, y: y };
+  },
+  topDown: function (x, y, displacement) {
+    return { x: x, y: y + displacement };
+  },
+  downUp: function (x, y, displacement) {
+    return { x: x, y: y - displacement };
+  },
+  diagonalTopRight: function (x, y, displacement) {
+    return { x: x + displacement, y: y + displacement };
+  },
+  diagonalTopLeft: function (x, y, displacement) {
+    return { x: x - displacement, y: y + displacement };
+  },
+  diagonalBottomRight: function (x, y, displacement) {
+    return { x: x + displacement, y: y - displacement };
+  },
+  diagonalBottomLeft: function (x, y, displacement) {
+    return { x: x - displacement, y: y - displacement };
+  },
+};
 
-// let directionsDisplacements = {
-//   leftRight: function () {
-//     return [1, 0];
-//   },
-//   rightLeft: function () {
-//     return [-1, 0];
-//   },
-//   topDown: function () {
-//     return [0, 1];
-//   },
-//   downUp: function () {
-//     return [0, -1];
-//   },
-//   diagonalTopRight: function () {
-//     return [1, 1];
-//   },
-//   diagonalTopLeft: function () {
-//     return [-1, 1];
-//   },
-//   diagonalBottomRight: function () {
-//     return [1, -1];
-//   },
-//   diagonalBottomLeft: function () {
-//     return [-1, -1];
-//   },
-// };
+let directionsDisplacements = {
+  leftRight: function () {
+    return [1, 0];
+  },
+  rightLeft: function () {
+    return [-1, 0];
+  },
+  topDown: function () {
+    return [0, 1];
+  },
+  downUp: function () {
+    return [0, -1];
+  },
+  diagonalTopRight: function () {
+    return [1, 1];
+  },
+  diagonalTopLeft: function () {
+    return [-1, 1];
+  },
+  diagonalBottomRight: function () {
+    return [1, -1];
+  },
+  diagonalBottomLeft: function () {
+    return [-1, -1];
+  },
+};
 
-// let checkDirections = {
-//   leftRight: function (x, y, lines, columns, wordLength) {
-//     return columns >= x + wordLength;
-//   },
-//   rightLeft: function (x, y, lines, columns, wordLength) {
-//     return x + 1 >= wordLength;
-//   },
-//   topDown: function (x, y, lines, columns, wordLength) {
-//     return lines >= y + wordLength;
-//   },
-//   downUp: function (x, y, lines, columns, wordLength) {
-//     return y + 1 >= wordLength;
-//   },
-//   diagonalTopRight: function (x, y, lines, columns, wordLength) {
-//     return columns >= x + wordLength && lines >= y + wordLength;
-//   },
-//   diagonalTopLeft: function (x, y, lines, columns, wordLength) {
-//     return x + 1 >= wordLength && lines >= y + wordLength;
-//   },
-//   diagonalBottomRight: function (x, y, lines, columns, wordLength) {
-//     return columns >= x + wordLength && y + 1 >= wordLength;
-//   },
-//   diagonalBottomLeft: function (x, y, lines, columns, wordLength) {
-//     return x + 1 >= wordLength && y + 1 >= wordLength;
-//   },
-// };
+let checkDirections = {
+  leftRight: function (x, y, lines, columns, wordLength) {
+    return columns >= x + wordLength;
+  },
+  rightLeft: function (x, y, lines, columns, wordLength) {
+    return x + 1 >= wordLength;
+  },
+  topDown: function (x, y, lines, columns, wordLength) {
+    return lines >= y + wordLength;
+  },
+  downUp: function (x, y, lines, columns, wordLength) {
+    return y + 1 >= wordLength;
+  },
+  diagonalTopRight: function (x, y, lines, columns, wordLength) {
+    return columns >= x + wordLength && lines >= y + wordLength;
+  },
+  diagonalTopLeft: function (x, y, lines, columns, wordLength) {
+    return x + 1 >= wordLength && lines >= y + wordLength;
+  },
+  diagonalBottomRight: function (x, y, lines, columns, wordLength) {
+    return columns >= x + wordLength && y + 1 >= wordLength;
+  },
+  diagonalBottomLeft: function (x, y, lines, columns, wordLength) {
+    return x + 1 >= wordLength && y + 1 >= wordLength;
+  },
+};
 
 function buildBoard(
   numberWords = WORDS_EASY,
-  boardSize = BOARD_EASY,
+  Size = BOARD_EASY,
   wordBank = words
 ) {
+  let boardSize = BOARD_HARD;
   let squares = new Array(boardSize);
   let words = [];
   let direction;
@@ -99,7 +107,8 @@ function buildBoard(
   let y;
   let i;
   let j;
-
+  if (Size === "Easy") boardSize = BOARD_EASY;
+  else if (Size === "Medium") boardSize = BOARD_MEDIUM;
   for (i = 0; i < boardSize; i++) {
     squares[i] = new Array(boardSize);
     for (j = 0; j < boardSize; j++) squares[i][j] = " ";

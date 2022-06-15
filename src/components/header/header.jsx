@@ -1,6 +1,5 @@
 import React from "react";
 import ControlPanel from "../control-panel/control-panel";
-import GameBoard from "../game-board/game-board";
 
 function Header() {
   const containerColor = {

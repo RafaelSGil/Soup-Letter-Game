@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-import GameBoard from "../game-board/game-board";
 import GridSquare from "../game-board/grid-square";
 import "./game-panel.css";
 
@@ -20,10 +19,7 @@ function GamePanel(props) {
   return (
     <section className="game-panel">
       <div className="container">
-        <div
-          id="game"
-          className={gameClass + (props.gameStarted ? "" : " hide")}
-        >
+        <div id="game" className={gameClass}>
           {board.map((cell, index) => (
             <GridSquare
               key={cell.key}

@@ -19,9 +19,9 @@ function ControlPanel(props) {
             disabled={gameStarted}
           >
             <option value="0">Select...</option>
-            <option value="1">Easy (10x5)</option>
-            <option value="2">Normal (20x10)</option>
-            <option value="3">Hard (30x15)</option>
+            <option value="1">Easy (10x10)</option>
+            <option value="2">Normal (15x15)</option>
+            <option value="3">Hard (20x20)</option>
           </select>
         </fieldset>
         <button

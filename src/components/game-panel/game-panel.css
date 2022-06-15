@@ -13,7 +13,37 @@
   margin: 0 auto;
 }
 
-#game {
+#game.easy {
+  width: auto;
+  height: auto;
+  min-width: 200px;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  grid-template-columns: repeat(10, auto);
+  gap: 0px;
+  display: grid;
+  justify-content: center;
+  perspective: 1000px;
+  user-select: none;
+}
+
+#game.avancado {
+  width: auto;
+  height: auto;
+  min-width: 200px;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  grid-template-columns: repeat(20, auto);
+  gap: 0px;
+  display: grid;
+  justify-content: center;
+  perspective: 1000px;
+  user-select: none;
+}
+
+#game.intermedio {
   width: auto;
   height: auto;
   min-width: 200px;
@@ -26,19 +56,4 @@
   justify-content: center;
   perspective: 1000px;
   user-select: none;
-}
-
-#game.easy {
-  width: auto;
-  grid-template-columns: repeat(15, auto);
-}
-
-#game.avancado {
-  width: auto;
-  grid-template-columns: repeat(20, auto);
-}
-
-#game.intermedio {
-  width: auto;
-  grid-template-columns: repeat(25, auto);
 }

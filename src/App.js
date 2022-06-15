@@ -27,8 +27,7 @@ function App() {
   useEffect(() => {
     let tempBoard;
     let tempWords;
-
-    [tempBoard, tempWords] = buildBoard(5, 15, words);
+    [tempBoard, tempWords] = buildBoard(5, difficulty, words);
     console.log(tempWords);
     setBoard(tempBoard);
     setWordsInside(tempWords);
