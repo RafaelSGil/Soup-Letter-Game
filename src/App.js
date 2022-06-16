@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import "./assets/styles/App.css";
 import GamePanel from "./components/game-panel/game-panel";
 import WordPanel from "./components/word-panel/word-panel";
-import StartGameModal from "./components/game-start-modal/game-start-modal.component";
 import Header from "./components/header/header";
 import ControlPanel from "./components/control-panel/control-panel";
 import Footer from "./components/footer/footer";
@@ -28,29 +27,28 @@ function App() {
     let tempBoard;
     let tempWords;
     [tempBoard, tempWords] = buildBoard(difficulty, words);
-    console.log(tempWords);
     setBoard(tempBoard);
     setWordsInside(tempWords);
 
-    if (gameStarted) {
-      timerID = setInterval(() => {
-        let nextTimer;
-        setTimer((previousState) => {
-          nextTimer = previousState - 1;
-          if (nextTimer === 0) {
-            setGameStarted(false);
-          }
-          return nextTimer;
-        });
-      }, 1000);
-    } else if (timer !== 50) {
-      setTimer(50);
-    }
-    return () => {
-      if (timerID == 0) {
-        clearInterval(timerID);
-      }
-    };
+    // if (gameStarted) {
+    //   timerID = setInterval(() => {
+    //     let nextTimer;
+    //     setTimer((previousState) => {
+    //       nextTimer = previousState - 1;
+    //       if (nextTimer === 0) {
+    //         setGameStarted(false);
+    //       }
+    //       return nextTimer;
+    //     });
+    //   }, 1000);
+    // } else if (timer !== 50) {
+    //   setTimer(50);
+    // }
+    // return () => {
+    //   if (timerID == 0) {
+    //     clearInterval(timerID);
+    //   }
+    // };
   }, [gameStarted]);
 
   const handleGameStart = () => {
