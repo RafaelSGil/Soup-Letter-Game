@@ -12,6 +12,7 @@ function WordList(props) {
     resetLetterClicked,
     wordsFound,
     onWordFound,
+    onGameEnd,
   } = props;
 
   let gameClass = gameStarted ? "" : "hide";
@@ -27,12 +28,14 @@ function WordList(props) {
               resetLetterClicked={resetLetterClicked}
               wordsFound={wordsFound}
               onWordFound={onWordFound}
+              onGameEnd={onGameEnd}
             />
           ))}
         </ul>
         <div>
           <p>{lettersClicked}</p>
         </div>
+        <button onClick={resetLetterClicked}>reset</button>
       </div>
     </>
   );

@@ -3,7 +3,13 @@ import React from "react";
 import "./control-panel.css";
 
 function ControlPanel(props) {
-  const { difficulty, handleDifficulty, gameStarted, onGameStart } = props;
+  const {
+    difficulty,
+    handleDifficulty,
+    gameStarted,
+    onGameStart,
+    totalPoints,
+  } = props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
 
   return (
@@ -47,7 +53,7 @@ function ControlPanel(props) {
         </dl>
         <dl className={`list-item left${gameStartedClass}`}>
           <dt>Score:</dt>
-          <dd id="points">0</dd>
+          <dd id="points">{totalPoints}</dd>
         </dl>
         <div id="top10" className={`right`}>
           <button id="btTop">See TOP 10</button>

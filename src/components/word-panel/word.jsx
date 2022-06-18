@@ -2,12 +2,20 @@ import React from "react";
 import { useState } from "react";
 
 function Word(props) {
-  const { word, lettersClicked, resetLetterClicked, wordsFound, onWordFound } =
-    props;
+  const {
+    word,
+    lettersClicked,
+    resetLetterClicked,
+    wordsFound,
+    onWordFound,
+    onGameEnd,
+  } = props;
+
   function isFound(word) {
     if (word === lettersClicked) {
       onWordFound(word);
       resetLetterClicked();
+      onGameEnd();
     }
   }
 
