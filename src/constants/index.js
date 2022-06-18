@@ -37,14 +37,13 @@ export const words = [
   "THRESHOLD",
 ];
 
-export const TIMER_EASY = 200;
 export const BOARD_EASY = 10;
 export const WORDS_EASY = 6;
 
-export const TIMER_MEDIUM = 175;
 export const BOARD_MEDIUM = 15;
 export const WORDS_MEDIUM = 8;
 
-export const TIMER_HARD = 150;
 export const BOARD_HARD = 20;
 export const WORDS_HARD = 10;
+
+export const TIMEOUT = 200;

@@ -5,7 +5,7 @@ import GridSquare from "../game-board/grid-square";
 import "./game-panel.css";
 
 function GamePanel(props) {
-  const { difficulty, board } = props;
+  const { difficulty, board, handleLettersClicked } = props;
   const [words, setWords] = useState([]);
   let gameClass = "easy";
   let gameHide = "hide";
@@ -30,7 +30,7 @@ function GamePanel(props) {
               key={cell.key}
               cell={cell}
               coordinates={index}
-              difficulty={difficulty}
+              handleLettersClicked={handleLettersClicked}
             />
           ))}
         </div>

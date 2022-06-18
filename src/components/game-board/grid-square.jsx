@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./game-square.css";
 
 function GridSquare(props) {
-  const { cell, coordinates, difficulty } = props;
+  const { cell, coordinates, handleLettersClicked } = props;
   const [isClicked, setIsClicked] = useState(false);
 
   const handleIsClicked = () => {
@@ -19,7 +19,8 @@ function GridSquare(props) {
         backgroundColor: isClicked ? "#cb70ff" : "",
         color: isClicked ? "white" : "",
       }}
-      onClick={handleIsClicked}
+      onClick={(e) => handleLettersClicked(e, cell)}
+      data={cell}
     >
       {cell}
     </button>
