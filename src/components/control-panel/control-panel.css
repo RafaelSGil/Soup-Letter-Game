@@ -120,7 +120,7 @@ button:hover {
   border: 2px solid grey;
 }
 
-#panel-control #top10 {
+#panel-control #newWord {
   grid-column: 2 / -1;
 }
 

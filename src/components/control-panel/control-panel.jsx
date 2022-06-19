@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 import "./control-panel.css";
 
@@ -9,6 +10,7 @@ function ControlPanel(props) {
     gameStarted,
     onGameStart,
     totalPoints,
+    getWord,
   } = props;
   const gameStartedClass = gameStarted ? " gameStarted" : "";
 
@@ -55,8 +57,10 @@ function ControlPanel(props) {
           <dt>Score:</dt>
           <dd id="points">{totalPoints}</dd>
         </dl>
-        <div id="top10" className={`right`}>
-          <button id="btTop">See TOP 10</button>
+        <div id="newWord" className={`right`}>
+          <button id="btTop" onClick={getWord}>
+            add Word
+          </button>
         </div>
       </div>
     </section>

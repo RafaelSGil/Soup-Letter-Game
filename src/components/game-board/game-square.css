@@ -76,3 +76,8 @@
   align-items: center;
   transition: all 0.2s;
 }
+
+.grid-square-Done {
+  background-color: #409c3aa1;
+  color: white;
+}
