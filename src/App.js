@@ -38,6 +38,13 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [win, setWin] = useState(false);
 
+  const resetLetterClicked = () => {
+    setLettersClicked("");
+    setFirstLetterCoordinates(-1);
+    setDirectionWhenClicked("");
+    setAllCoordinates([]);
+  };
+
   const handleKeyEvent = useCallback((event) => {
     if (event.key === "Escape") {
       resetLetterClicked();
@@ -59,8 +66,6 @@ function App() {
     [tempBoard, tempWords] = buildBoard(difficulty, words);
     setBoard(tempBoard);
     setWordsInside(tempWords);
-
-    console.log("Words inside " + wordsInside.length);
   }, [gameStarted]);
 
   useEffect(() => {
@@ -100,16 +105,6 @@ function App() {
       setGameStarted(true);
       setGameEnded(false);
       setTotalPoints(0);
-    }
-  };
-
-  const handleGameEnd = () => {
-    if (wordsFound.length / 2 === wordsInside.length) {
-      setGameStarted(false);
-      setWordsFound([]);
-      resetLetterClicked();
-      setModalOpen(true);
-      setWin(true);
     }
   };
 
@@ -154,11 +149,11 @@ function App() {
     setTotalPoints(points);
   };
 
-  const handleWordsFound = () => {
+  const handleWordsFound = (newLetters) => {
     let allWordsFound = wordsFound;
-    allWordsFound.push(lettersClicked);
+    allWordsFound.push(newLetters);
     setWordsFound(allWordsFound);
-    handleTotalPoints(lettersClicked);
+    handleTotalPoints(newLetters);
   };
 
   const handleFirstLetterCoordinates = (coordinates) => {
@@ -315,19 +310,14 @@ function App() {
 
       const distance = firstCoordinates - coordinates;
 
-      let aux = 0;
-
-      if (
-        Math.round(Math.abs(distance / boardSize)) >
-        Math.abs(distance / boardSize)
-      ) {
-        aux = 1;
-      }
-
-      const diff =
+      let diff =
         Math.abs(distance) >= boardSize
-          ? Math.abs(Math.trunc(distance / boardSize)) + aux
+          ? Math.abs((firstCoordinates % boardSize) - (coordinates % boardSize))
           : Math.abs(distance);
+
+      if (diff === 0) {
+        diff = Math.abs(Math.trunc(distance / boardSize));
+      }
 
       let topOrBottom = undefined; //false = top, true = bottom
       let leftOrRight = undefined; //false = left, true = right
@@ -348,10 +338,7 @@ function App() {
           }
           if (firstCoordinates + boardSize * diff === coordinates)
             upOrDown = true; //down
-          if (
-            firstCoordinates + boardSize * (diff - 1) - (diff - 1) ===
-            coordinates
-          ) {
+          if (firstCoordinates + boardSize * diff - diff === coordinates) {
             leftOrRight = false; //left
             upOrDown = false;
           }
@@ -400,10 +387,6 @@ function App() {
         }
       }
 
-      console.log(dir);
-      console.log(diff + " - " + distance);
-      console.log(firstCoordinates + " " + coordinates);
-
       let newLetters = lettersClicked;
 
       switch (dir) {
@@ -451,22 +434,19 @@ function App() {
 
       setLettersClicked(newLetters);
 
-      // if (wordsInside.includes(newLetters)) {
-      //   handleWordsFound();
-      //   resetLetterClicked();
-      // }
+      if (wordsInside.includes(newLetters)) {
+        handleWordsFound(newLetters);
+        resetLetterClicked();
+      }
+      console.log("fpound: " + wordsFound + " inside " + wordsInside);
+      if (wordsFound.length === wordsInside.length) {
+        setGameStarted(false);
+        setWordsFound([]);
+        resetLetterClicked();
+        setModalOpen(true);
+        setWin(true);
+      }
     }
-  };
-
-  function getDistBetweenTwoCells(a, b) {
-    return a > b ? a - b : b - a;
-  }
-
-  const resetLetterClicked = () => {
-    setLettersClicked("");
-    setFirstLetterCoordinates(-1);
-    setDirectionWhenClicked("");
-    setAllCoordinates([]);
   };
 
   function checkInput(input) {
@@ -505,7 +485,6 @@ function App() {
             lettersClicked={lettersClicked}
             resetLetterClicked={resetLetterClicked}
             wordsFound={wordsFound}
-            onGameEnd={handleGameEnd}
           />
           <GamePanel
             difficulty={difficulty}

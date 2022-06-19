@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 function Word(props) {
-  const { word, lettersClicked, resetLetterClicked, wordsFound, onGameEnd } =
-    props;
+  const { word, wordsFound } = props;
 
   return (
     <li

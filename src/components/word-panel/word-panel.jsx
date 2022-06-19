@@ -5,14 +5,8 @@ import Word from "../word-panel/word";
 import "./word-panel.css";
 
 function WordList(props) {
-  const {
-    gameStarted,
-    words,
-    lettersClicked,
-    resetLetterClicked,
-    wordsFound,
-    onGameEnd,
-  } = props;
+  const { gameStarted, words, lettersClicked, resetLetterClicked, wordsFound } =
+    props;
 
   let gameClass = gameStarted ? "" : "hide";
 
@@ -21,13 +15,7 @@ function WordList(props) {
       <div className={`fundo ${gameClass}`}>
         <ul className="words-list">
           {words.map((word) => (
-            <Word
-              word={word}
-              lettersClicked={lettersClicked}
-              resetLetterClicked={resetLetterClicked}
-              wordsFound={wordsFound}
-              onGameEnd={onGameEnd}
-            />
+            <Word word={word} wordsFound={wordsFound} />
           ))}
         </ul>
         <div>
