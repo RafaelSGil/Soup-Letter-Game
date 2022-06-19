@@ -46,7 +46,7 @@ export const WORDS_MEDIUM = 8;
 export const BOARD_HARD = 20;
 export const WORDS_HARD = 10;
 
-export const TIMEOUT = 10;
+export const TIMEOUT = 200;
 
 export let checkDirections = {
   leftRight: function (x, y, lines, columns, wordLength) {

@@ -11,7 +11,6 @@ function WordList(props) {
     lettersClicked,
     resetLetterClicked,
     wordsFound,
-    onWordFound,
     onGameEnd,
   } = props;
 
@@ -27,7 +26,6 @@ function WordList(props) {
               lettersClicked={lettersClicked}
               resetLetterClicked={resetLetterClicked}
               wordsFound={wordsFound}
-              onWordFound={onWordFound}
               onGameEnd={onGameEnd}
             />
           ))}

@@ -14,7 +14,7 @@ function GridSquare(props) {
 
   return (
     <button
-      className={`grid-square grid-square-${props.difficulty}`}
+      className={`grid-square`}
       onClick={(e) => handleLettersClicked(e, cell, coordinates)}
     >
       {cell}

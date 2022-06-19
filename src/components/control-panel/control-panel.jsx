@@ -58,7 +58,7 @@ function ControlPanel(props) {
           <dd id="points">{totalPoints}</dd>
         </dl>
         <div id="newWord" className={`right`}>
-          <button id="btTop" onClick={getWord}>
+          <button id="btTop" onClick={getWord} disabled={gameStarted}>
             add Word
           </button>
         </div>
