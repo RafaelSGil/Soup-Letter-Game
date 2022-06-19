@@ -19,7 +19,7 @@ function WordList(props) {
           ))}
         </ul>
         <div>
-          <p>{lettersClicked}</p>
+          <p>{lettersClicked === "" ? "Not selected" : lettersClicked}</p>
         </div>
         <button onClick={resetLetterClicked}>reset</button>
       </div>
